@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -21,9 +21,7 @@
   --blur:24px;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
   margin:0;
@@ -33,57 +31,34 @@ html,body{
 }
 
 body{
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "Segoe UI",
-    sans-serif;
-
+  font-family:-apple-system,BlinkMacSystemFont,
+  "SF Pro Display","Segoe UI",sans-serif;
   background:#171a1f;
   color:var(--text);
-
   padding:10px;
 }
-
-
-/* =========================
-   WIDGET
-========================= */
 
 .widget{
   width:100%;
   max-width:620px;
   margin:auto;
-
   border:1px solid var(--border);
   border-radius:var(--radius);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.09),
-      rgba(255,255,255,.035)
-    );
-
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.09),
+    rgba(255,255,255,.035)
+  );
   backdrop-filter:blur(var(--blur));
   -webkit-backdrop-filter:blur(var(--blur));
-
   box-shadow:
     0 20px 60px rgba(0,0,0,.35),
     inset 0 1px rgba(255,255,255,.06);
-
   overflow:hidden;
 }
 
-
-/* =========================
-   HEADER
-========================= */
-
 .header{
   padding:17px 18px 12px;
-
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -98,35 +73,17 @@ body{
 .icon{
   width:36px;
   height:36px;
-
   display:grid;
   place-items:center;
-
   border-radius:11px;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--accent),
-      color-mix(
-        in srgb,
-        var(--accent) 55%,
-        white
-      )
-    );
-
-  box-shadow:
-    0 7px 22px
-    color-mix(
-      in srgb,
-      var(--accent) 22%,
-      transparent
-    );
+  background:linear-gradient(
+    135deg,
+    var(--accent),
+    color-mix(in srgb,var(--accent) 55%,white)
+  );
 }
 
-.icon svg{
-  width:19px;
-}
+.icon svg{width:19px}
 
 .title{
   font-size:15px;
@@ -143,29 +100,18 @@ body{
 .settings-btn{
   width:32px;
   height:32px;
-
   padding:0;
-
   display:grid;
   place-items:center;
-
   border:1px solid var(--border);
   border-radius:10px;
-
   background:rgba(255,255,255,.05);
   color:var(--text);
-
   cursor:pointer;
 }
 
-
-/* =========================
-   STATS
-========================= */
-
 .stats{
   padding:3px 18px 15px;
-
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
@@ -173,10 +119,8 @@ body{
 
 .stat{
   padding:13px;
-
   border:1px solid rgba(255,255,255,.07);
   border-radius:15px;
-
   background:rgba(255,255,255,.035);
 }
 
@@ -187,7 +131,6 @@ body{
 
 .stat-value{
   margin-top:4px;
-
   font-size:22px;
   font-weight:800;
   letter-spacing:-1px;
@@ -199,14 +142,10 @@ body{
   font-weight:500;
 }
 
-.fire{
+.stat-value .fire{
   color:var(--accent);
+  font-size:20px;
 }
-
-
-/* =========================
-   DAYS
-========================= */
 
 .days{
   padding:0 18px 18px;
@@ -214,7 +153,6 @@ body{
 
 .days-header{
   margin-bottom:9px;
-
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -242,9 +180,7 @@ body{
 
 .day-name{
   margin-bottom:5px;
-
   text-align:center;
-
   color:var(--muted);
   font-size:8px;
   font-weight:600;
@@ -253,23 +189,17 @@ body{
 .day-button{
   width:100%;
   aspect-ratio:1;
-
   padding:0;
-
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   gap:2px;
-
   border:1px solid rgba(255,255,255,.08);
   border-radius:12px;
-
   background:rgba(255,255,255,.035);
   color:var(--text);
-
   cursor:pointer;
-
   transition:.18s;
 }
 
@@ -289,27 +219,12 @@ body{
 }
 
 .day.training .day-button{
-  border-color:
-    color-mix(
-      in srgb,
-      var(--accent) 55%,
-      transparent
-    );
-
-  background:
-    color-mix(
-      in srgb,
-      var(--accent) 15%,
-      transparent
-    );
-
-  box-shadow:
-    0 0 18px
-    color-mix(
-      in srgb,
-      var(--accent) 10%,
-      transparent
-    );
+  border-color:color-mix(
+    in srgb,var(--accent) 55%,transparent
+  );
+  background:color-mix(
+    in srgb,var(--accent) 15%,transparent
+  );
 }
 
 .day.training .day-status{
@@ -317,19 +232,12 @@ body{
 }
 
 .day.rest .day-button{
-  border-color:
-    color-mix(
-      in srgb,
-      var(--rest) 45%,
-      transparent
-    );
-
-  background:
-    color-mix(
-      in srgb,
-      var(--rest) 12%,
-      transparent
-    );
+  border-color:color-mix(
+    in srgb,var(--rest) 45%,transparent
+  );
+  background:color-mix(
+    in srgb,var(--rest) 12%,transparent
+  );
 }
 
 .day.rest .day-status{
@@ -339,18 +247,10 @@ body{
 .day.today .day-button{
   box-shadow:
     0 0 0 1px var(--accent),
-    0 0 20px
-    color-mix(
-      in srgb,
-      var(--accent) 15%,
-      transparent
+    0 0 20px color-mix(
+      in srgb,var(--accent) 15%,transparent
     );
 }
-
-
-/* =========================
-   PROGRESS
-========================= */
 
 .progress-section{
   padding:0 18px 18px;
@@ -359,9 +259,7 @@ body{
 .progress-top{
   display:flex;
   justify-content:space-between;
-
   margin-bottom:7px;
-
   font-size:9px;
 }
 
@@ -371,42 +269,27 @@ body{
 
 .progress-bar{
   height:5px;
-
   overflow:hidden;
-
   border-radius:10px;
-
   background:rgba(255,255,255,.07);
 }
 
 .progress-fill{
   height:100%;
   width:0;
-
   border-radius:10px;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--accent),
-      var(--accent2)
-    );
-
+  background:linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent2)
+  );
   transition:width .3s ease;
 }
 
-
-/* =========================
-   EDITOR
-========================= */
-
 .editor{
   display:none;
-
   padding:17px 18px;
-
   border-top:1px solid var(--border);
-
   background:rgba(0,0,0,.15);
 }
 
@@ -417,7 +300,6 @@ body{
 .editor-title{
   display:flex;
   justify-content:space-between;
-
   margin-bottom:12px;
 }
 
@@ -438,18 +320,14 @@ body{
 
 .editor-card{
   padding:11px;
-
   border:1px solid rgba(255,255,255,.07);
   border-radius:14px;
-
   background:rgba(255,255,255,.035);
 }
 
 .editor-card h3{
   margin:0 0 9px;
-
   color:var(--muted);
-
   font-size:8px;
   text-transform:uppercase;
   letter-spacing:.5px;
@@ -464,12 +342,9 @@ body{
 .color{
   width:24px;
   height:24px;
-
   padding:0;
-
   border-radius:8px;
   border:2px solid transparent;
-
   cursor:pointer;
 }
 
@@ -491,7 +366,6 @@ body{
 
 .range-value{
   margin-top:4px;
-
   color:var(--muted);
   font-size:8px;
 }
@@ -500,39 +374,28 @@ body{
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   font-size:9px;
 }
 
 .switch{
   width:32px;
   height:18px;
-
   padding:0;
-
   position:relative;
-
   border:0;
   border-radius:20px;
-
   background:#383d45;
 }
 
 .switch::after{
   content:"";
-
   position:absolute;
-
   top:2px;
   left:2px;
-
   width:14px;
   height:14px;
-
   border-radius:50%;
-
   background:white;
-
   transition:.2s;
 }
 
@@ -546,7 +409,6 @@ body{
 
 .editor-actions{
   margin-top:10px;
-
   display:flex;
   justify-content:flex-end;
   gap:7px;
@@ -554,13 +416,10 @@ body{
 
 .editor-actions button{
   padding:8px 11px;
-
   border:1px solid var(--border);
   border-radius:10px;
-
   background:rgba(255,255,255,.05);
   color:var(--text);
-
   font-size:9px;
   cursor:pointer;
 }
@@ -570,20 +429,11 @@ body{
   border-color:transparent!important;
 }
 
-
-/* =========================
-   RESPONSIVE
-========================= */
-
 @media(max-width:430px){
 
-  body{
-    padding:6px;
-  }
+  body{padding:6px}
 
-  .header{
-    padding:14px;
-  }
+  .header{padding:14px}
 
   .stats,
   .days,
@@ -592,9 +442,7 @@ body{
     padding-right:14px;
   }
 
-  .editor{
-    padding:14px;
-  }
+  .editor{padding:14px}
 
   .editor-grid{
     grid-template-columns:1fr;
@@ -624,10 +472,8 @@ body{
            fill="none"
            stroke="white"
            stroke-width="2">
-
         <path d="M6 12l4 4L18 8"/>
         <path d="M4 4h16v16H4z"/>
-
       </svg>
     </div>
 
@@ -646,9 +492,7 @@ body{
   <button
     class="settings-btn"
     id="settingsButton">
-
     ⚙
-
   </button>
 
 </header>
@@ -657,31 +501,26 @@ body{
 <section class="stats">
 
   <div class="stat">
-
     <div class="stat-label">
-      STREAK ACTUEL
+      CURRENT STREAK
     </div>
 
     <div class="stat-value">
       <span class="fire">🔥</span>
       <span id="currentStreak">0</span>
-      <span>jours</span>
+      <span>days</span>
     </div>
-
   </div>
 
-
   <div class="stat">
-
     <div class="stat-label">
-      MEILLEUR STREAK
+      BEST STREAK
     </div>
 
     <div class="stat-value">
       <span id="bestStreak">0</span>
-      <span>jours</span>
+      <span>days</span>
     </div>
-
   </div>
 
 </section>
@@ -692,15 +531,13 @@ body{
   <div class="days-header">
 
     <div class="days-title">
-      Cette semaine
+      This week
     </div>
 
     <div
       class="days-help"
       id="weekProgress">
-
       0 / 7
-
     </div>
 
   </div>
@@ -718,23 +555,20 @@ body{
   <div class="progress-top">
 
     <span>
-      Progression de la semaine
+      Weekly progress
     </span>
 
     <span id="progressText">
       0%
-
     </span>
 
   </div>
 
   <div class="progress-bar">
-
     <div
       class="progress-fill"
       id="progressFill">
     </div>
-
   </div>
 
 </section>
@@ -747,11 +581,11 @@ body{
   <div class="editor-title">
 
     <strong>
-      Personnalisation
+      Customization
     </strong>
 
     <span>
-      Sauvegardée automatiquement
+      Saved automatically
     </span>
 
   </div>
@@ -759,11 +593,10 @@ body{
 
   <div class="editor-grid">
 
-
     <div class="editor-card">
 
       <h3>
-        Couleur
+        Accent color
       </h3>
 
       <div class="colors">
@@ -806,7 +639,7 @@ body{
     <div class="editor-card">
 
       <h3>
-        Glass Blur
+        Glass blur
       </h3>
 
       <input
@@ -820,9 +653,7 @@ body{
       <div
         class="range-value"
         id="blurValue">
-
         24px
-
       </div>
 
     </div>
@@ -831,7 +662,7 @@ body{
     <div class="editor-card">
 
       <h3>
-        Arrondis
+        Corner radius
       </h3>
 
       <input
@@ -845,9 +676,7 @@ body{
       <div
         class="range-value"
         id="radiusValue">
-
         20px
-
       </div>
 
     </div>
@@ -856,12 +685,12 @@ body{
     <div class="editor-card">
 
       <h3>
-        Mode
+        Theme
       </h3>
 
       <div class="toggle">
 
-        Fond clair
+        Light mode
 
         <button
           class="switch"
@@ -878,15 +707,13 @@ body{
   <div class="editor-actions">
 
     <button id="reset">
-      Réinitialiser
+      Reset
     </button>
 
     <button
       class="save"
       id="save">
-
-      ✓ Enregistrer
-
+      ✓ Save
     </button>
 
   </div>
@@ -910,7 +737,7 @@ const root =
 ========================= */
 
 const dayNames =
-  ["L","M","M","J","V","S","D"];
+  ["MON","TUE","WED","THU","FRI","SAT","SUN"];
 
 const today =
   new Date();
@@ -925,12 +752,8 @@ let week =
     ) || "null"
   );
 
-if(
-  !week ||
-  week.length !== 7
-){
-  week =
-    Array(7).fill("none");
+if(!week || week.length !== 7){
+  week = Array(7).fill("none");
 }
 
 
@@ -945,9 +768,15 @@ function renderDays(){
 
     wrapper.className =
       "day " +
-      (status === "training" ? "training " : "") +
-      (status === "rest" ? "rest " : "") +
-      (index === todayIndex ? "today" : "");
+      (status === "training"
+        ? "training "
+        : "") +
+      (status === "rest"
+        ? "rest "
+        : "") +
+      (index === todayIndex
+        ? "today"
+        : "");
 
     const button =
       document.createElement("button");
@@ -959,12 +788,13 @@ function renderDays(){
       <div class="day-number">
         ${dayNames[index]}
       </div>
+
       <div class="day-status">
         ${
           status === "training"
             ? "TRAIN"
             : status === "rest"
-              ? "REPOS"
+              ? "REST"
               : "—"
         }
       </div>
@@ -973,11 +803,6 @@ function renderDays(){
     button.addEventListener(
       "click",
       ()=>{
-
-        /*
-          Cycle:
-          aucun → entraînement → repos → aucun
-        */
 
         if(week[index] === "none")
           week[index] = "training";
@@ -990,7 +815,11 @@ function renderDays(){
         else
           week[index] = "none";
 
-        saveWeek();
+        localStorage.setItem(
+          "trainingStreakWeek",
+          JSON.stringify(week)
+        );
+
         renderDays();
         updateStats();
 
@@ -998,21 +827,9 @@ function renderDays(){
     );
 
     wrapper.appendChild(button);
-
-    $("dayGrid")
-      .appendChild(wrapper);
+    $("dayGrid").appendChild(wrapper);
 
   });
-
-}
-
-
-function saveWeek(){
-
-  localStorage.setItem(
-    "trainingStreakWeek",
-    JSON.stringify(week)
-  );
 
 }
 
@@ -1022,14 +839,6 @@ function saveWeek(){
 ========================= */
 
 function calculateStreak(){
-
-  /*
-    Un jour de repos prévu
-    ne casse pas le streak.
-
-    Un jour non défini casse
-    la continuité.
-  */
 
   let current = 0;
   let best = 0;
@@ -1043,9 +852,7 @@ function calculateStreak(){
     ){
 
       temp++;
-
-      best =
-        Math.max(best,temp);
+      best = Math.max(best,temp);
 
     }else{
 
@@ -1078,7 +885,6 @@ function calculateStreak(){
   }
 
   return {current,best};
-
 }
 
 
@@ -1095,11 +901,6 @@ function updateStats(){
     .textContent =
     streak.best;
 
-
-  const completed =
-    week.filter(
-      x => x === "training"
-    ).length;
 
   const planned =
     week.filter(
@@ -1124,7 +925,6 @@ function updateStats(){
   $("progressFill")
     .style.width =
     percent + "%";
-
 }
 
 
@@ -1140,10 +940,8 @@ $("settingsButton")
 .addEventListener(
   "click",
   ()=>{
-
     $("editor")
       .classList.toggle("open");
-
   }
 );
 
@@ -1160,20 +958,15 @@ document
     "click",
     ()=>{
 
-      const color =
-        button.dataset.color;
-
       root.style.setProperty(
         "--accent",
-        color
+        button.dataset.color
       );
 
       document
       .querySelectorAll(".color")
       .forEach(x =>
-        x.classList.remove(
-          "active"
-        )
+        x.classList.remove("active")
       );
 
       button.classList.add("active");
@@ -1254,7 +1047,7 @@ $("themeSwitch")
 
     const light =
       $("themeSwitch")
-        .classList.contains("active");
+      .classList.contains("active");
 
     if(light){
 
@@ -1273,6 +1066,9 @@ $("themeSwitch")
         "#666b73"
       );
 
+      document.body.style.background =
+        "#e7e8eb";
+
     }else{
 
       root.style.setProperty(
@@ -1290,10 +1086,9 @@ $("themeSwitch")
         "#969da8"
       );
 
+      document.body.style.background =
+        "#171a1f";
     }
-
-    document.body.style.background =
-      light ? "#e7e8eb" : "#171a1f";
 
     saveStyle();
 
@@ -1302,36 +1097,28 @@ $("themeSwitch")
 
 
 /* =========================
-   SAVE STYLE
+   SAVE
 ========================= */
 
 function saveStyle(){
 
-  const data = {
-
-    accent:
-      getComputedStyle(root)
-      .getPropertyValue(
-        "--accent"
-      ),
-
-    blur:
-      getComputedStyle(root)
-      .getPropertyValue(
-        "--blur"
-      ),
-
-    radius:
-      getComputedStyle(root)
-      .getPropertyValue(
-        "--radius"
-      )
-
-  };
-
   localStorage.setItem(
     "trainingStreakStyle",
-    JSON.stringify(data)
+    JSON.stringify({
+
+      accent:
+        getComputedStyle(root)
+        .getPropertyValue("--accent"),
+
+      blur:
+        getComputedStyle(root)
+        .getPropertyValue("--blur"),
+
+      radius:
+        getComputedStyle(root)
+        .getPropertyValue("--radius")
+
+    })
   );
 
 }
@@ -1344,18 +1131,13 @@ $("save")
 
     saveStyle();
 
-    $("save")
-      .textContent =
-      "✓ Enregistré";
+    $("save").textContent =
+      "✓ Saved";
 
-    setTimeout(
-      ()=>{
-        $("save")
-          .textContent =
-          "✓ Enregistrer";
-      },
-      1200
-    );
+    setTimeout(()=>{
+      $("save").textContent =
+        "✓ Save";
+    },1200);
 
   }
 );
@@ -1406,24 +1188,21 @@ $("reset")
     $("blurRange").value = 24;
     $("radiusRange").value = 20;
 
-    $("blurValue")
-      .textContent = "24px";
-
-    $("radiusValue")
-      .textContent = "20px";
+    $("blurValue").textContent = "24px";
+    $("radiusValue").textContent = "20px";
 
     $("themeSwitch")
       .classList.remove("active");
 
     document
-      .querySelectorAll(".color")
-      .forEach(x =>
-        x.classList.remove("active")
-      );
+    .querySelectorAll(".color")
+    .forEach(x =>
+      x.classList.remove("active")
+    );
 
     document
-      .querySelector(".color.orange")
-      .classList.add("active");
+    .querySelector(".color.orange")
+    .classList.add("active");
 
     saveStyle();
 
@@ -1432,7 +1211,7 @@ $("reset")
 
 
 /* =========================
-   LOAD STYLE
+   LOAD
 ========================= */
 
 const savedStyle =
@@ -1461,10 +1240,8 @@ if(savedStyle){
     $("blurRange").value =
       parseInt(savedStyle.blur);
 
-    $("blurValue")
-      .textContent =
+    $("blurValue").textContent =
       savedStyle.blur;
-
   }
 
   if(savedStyle.radius){
@@ -1477,10 +1254,8 @@ if(savedStyle){
     $("radiusRange").value =
       parseInt(savedStyle.radius);
 
-    $("radiusValue")
-      .textContent =
+    $("radiusValue").textContent =
       savedStyle.radius;
-
   }
 
 }
