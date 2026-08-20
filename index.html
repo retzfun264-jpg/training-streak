@@ -2,63 +2,135 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Training Streak</title>
 
 <style>
 :root{
-  --bg:#171a1f;
-  --card:rgba(255,255,255,.065);
-  --border:rgba(255,255,255,.11);
+  --notion-bg:#191919;
+
+  --widget-bg:#111318;
+  --panel:rgba(255,255,255,.055);
+  --border:rgba(255,255,255,.10);
+
   --text:#f5f7fa;
-  --muted:#969da8;
+  --muted:#8f96a1;
 
   --accent:#ff6b35;
   --accent2:#63d7ff;
+  --accent3:#9b7bff;
   --rest:#9b7bff;
 
   --radius:20px;
   --blur:24px;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
-html,body{
+html,
+body{
   margin:0;
-  padding:0;
   width:100%;
   min-height:100%;
 }
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,
-  "SF Pro Display","Segoe UI",sans-serif;
-  background:#171a1f;
-  color:var(--text);
   padding:10px;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Segoe UI",
+    sans-serif;
+
+  color:var(--text);
+
+  /* Notion-like background */
+  background:#191919;
 }
 
+
+/* =====================================================
+   WIDGET
+===================================================== */
+
 .widget{
+  position:relative;
+
   width:100%;
   max-width:620px;
   margin:auto;
+
+  overflow:hidden;
+
   border:1px solid var(--border);
   border-radius:var(--radius);
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.09),
-    rgba(255,255,255,.035)
-  );
+
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(155,123,255,.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 100% 20%,
+      rgba(99,215,255,.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 110%,
+      rgba(255,107,53,.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #191c23,
+      #101217 70%
+    );
+
   backdrop-filter:blur(var(--blur));
   -webkit-backdrop-filter:blur(var(--blur));
+
   box-shadow:
-    0 20px 60px rgba(0,0,0,.35),
-    inset 0 1px rgba(255,255,255,.06);
-  overflow:hidden;
+    0 25px 70px rgba(0,0,0,.38),
+    inset 0 1px rgba(255,255,255,.07);
 }
 
+
+/* subtle glass shine */
+
+.widget::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255,255,255,.07),
+      transparent 25%,
+      transparent 70%,
+      rgba(255,255,255,.025)
+    );
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
 .header{
-  padding:17px 18px 12px;
+  position:relative;
+  z-index:2;
+
+  padding:17px 18px 13px;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -73,17 +145,31 @@ body{
 .icon{
   width:36px;
   height:36px;
+
   display:grid;
   place-items:center;
+
   border-radius:11px;
-  background:linear-gradient(
-    135deg,
-    var(--accent),
-    color-mix(in srgb,var(--accent) 55%,white)
-  );
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      var(--accent3)
+    );
+
+  box-shadow:
+    0 8px 25px
+    color-mix(
+      in srgb,
+      var(--accent) 22%,
+      transparent
+    );
 }
 
-.icon svg{width:19px}
+.icon svg{
+  width:19px;
+}
 
 .title{
   font-size:15px;
@@ -93,66 +179,116 @@ body{
 
 .subtitle{
   margin-top:2px;
+
   color:var(--muted);
+
   font-size:9px;
 }
 
 .settings-btn{
   width:32px;
   height:32px;
+
   padding:0;
+
   display:grid;
   place-items:center;
+
   border:1px solid var(--border);
   border-radius:10px;
+
   background:rgba(255,255,255,.05);
+
   color:var(--text);
+
   cursor:pointer;
+
+  transition:.2s;
 }
 
+.settings-btn:hover{
+  background:rgba(255,255,255,.10);
+  transform:translateY(-1px);
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
 .stats{
+  position:relative;
+  z-index:2;
+
   padding:3px 18px 15px;
+
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:10px;
 }
 
 .stat{
   padding:13px;
+
   border:1px solid rgba(255,255,255,.07);
   border-radius:15px;
-  background:rgba(255,255,255,.035);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.065),
+      rgba(255,255,255,.025)
+    );
+
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.035);
 }
 
 .stat-label{
   color:var(--muted);
+
   font-size:9px;
 }
 
 .stat-value{
   margin-top:4px;
+
   font-size:22px;
   font-weight:800;
+
   letter-spacing:-1px;
 }
 
 .stat-value span{
   font-size:10px;
+
   color:var(--muted);
+
   font-weight:500;
 }
 
 .stat-value .fire{
   color:var(--accent);
-  font-size:20px;
+
+  font-size:19px;
 }
 
+
+/* =====================================================
+   DAYS
+===================================================== */
+
 .days{
+  position:relative;
+  z-index:2;
+
   padding:0 18px 18px;
 }
 
 .days-header{
   margin-bottom:9px;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -180,8 +316,11 @@ body{
 
 .day-name{
   margin-bottom:5px;
+
   text-align:center;
+
   color:var(--muted);
+
   font-size:8px;
   font-weight:600;
 }
@@ -189,27 +328,49 @@ body{
 .day-button{
   width:100%;
   aspect-ratio:1;
+
   padding:0;
+
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+
   gap:2px;
+
   border:1px solid rgba(255,255,255,.08);
   border-radius:12px;
-  background:rgba(255,255,255,.035);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.05),
+      rgba(255,255,255,.025)
+    );
+
   color:var(--text);
+
   cursor:pointer;
-  transition:.18s;
+
+  transition:
+    transform .18s,
+    background .18s,
+    border .18s;
 }
 
 .day-button:hover{
   transform:translateY(-1px);
-  background:rgba(255,255,255,.08);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.09),
+      rgba(255,255,255,.035)
+    );
 }
 
 .day-number{
-  font-size:12px;
+  font-size:11px;
   font-weight:700;
 }
 
@@ -218,48 +379,102 @@ body{
   color:var(--muted);
 }
 
+
+/* TRAINING */
+
 .day.training .day-button{
-  border-color:color-mix(
-    in srgb,var(--accent) 55%,transparent
-  );
-  background:color-mix(
-    in srgb,var(--accent) 15%,transparent
-  );
+  border-color:
+    color-mix(
+      in srgb,
+      var(--accent) 60%,
+      transparent
+    );
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      color-mix(
+        in srgb,
+        var(--accent) 22%,
+        transparent
+      ),
+      transparent 70%
+    ),
+    rgba(255,255,255,.035);
+
+  box-shadow:
+    inset 0 0 20px
+    color-mix(
+      in srgb,
+      var(--accent) 7%,
+      transparent
+    );
 }
 
 .day.training .day-status{
   color:var(--accent);
 }
 
+
+/* REST */
+
 .day.rest .day-button{
-  border-color:color-mix(
-    in srgb,var(--rest) 45%,transparent
-  );
-  background:color-mix(
-    in srgb,var(--rest) 12%,transparent
-  );
+  border-color:
+    color-mix(
+      in srgb,
+      var(--rest) 55%,
+      transparent
+    );
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      color-mix(
+        in srgb,
+        var(--rest) 18%,
+        transparent
+      ),
+      transparent 70%
+    ),
+    rgba(255,255,255,.035);
 }
 
 .day.rest .day-status{
   color:var(--rest);
 }
 
+
+/* TODAY */
+
 .day.today .day-button{
   box-shadow:
     0 0 0 1px var(--accent),
-    0 0 20px color-mix(
-      in srgb,var(--accent) 15%,transparent
+    0 0 20px
+    color-mix(
+      in srgb,
+      var(--accent) 14%,
+      transparent
     );
 }
 
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
 .progress-section{
+  position:relative;
+  z-index:2;
+
   padding:0 18px 18px;
 }
 
 .progress-top{
+  margin-bottom:7px;
+
   display:flex;
   justify-content:space-between;
-  margin-bottom:7px;
+
   font-size:9px;
 }
 
@@ -269,28 +484,61 @@ body{
 
 .progress-bar{
   height:5px;
+
   overflow:hidden;
+
   border-radius:10px;
+
   background:rgba(255,255,255,.07);
 }
 
 .progress-fill{
   height:100%;
+
   width:0;
+
   border-radius:10px;
-  background:linear-gradient(
-    90deg,
-    var(--accent),
-    var(--accent2)
-  );
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--accent),
+      var(--accent3),
+      var(--accent2)
+    );
+
+  box-shadow:
+    0 0 14px
+    color-mix(
+      in srgb,
+      var(--accent) 25%,
+      transparent
+    );
+
   transition:width .3s ease;
 }
 
+
+/* =====================================================
+   EDITOR
+===================================================== */
+
 .editor{
+  position:relative;
+  z-index:3;
+
   display:none;
+
   padding:17px 18px;
+
   border-top:1px solid var(--border);
-  background:rgba(0,0,0,.15);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(0,0,0,.25),
+      rgba(0,0,0,.12)
+    );
 }
 
 .editor.open{
@@ -300,6 +548,7 @@ body{
 .editor-title{
   display:flex;
   justify-content:space-between;
+
   margin-bottom:12px;
 }
 
@@ -315,21 +564,33 @@ body{
 .editor-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:9px;
 }
 
 .editor-card{
   padding:11px;
+
   border:1px solid rgba(255,255,255,.07);
   border-radius:14px;
-  background:rgba(255,255,255,.035);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.025)
+    );
 }
 
 .editor-card h3{
   margin:0 0 9px;
+
   color:var(--muted);
+
   font-size:8px;
+
   text-transform:uppercase;
+
   letter-spacing:.5px;
 }
 
@@ -342,15 +603,22 @@ body{
 .color{
   width:24px;
   height:24px;
+
   padding:0;
+
   border-radius:8px;
+
   border:2px solid transparent;
+
   cursor:pointer;
 }
 
 .color.active{
   border-color:white;
-  box-shadow:0 0 0 2px rgba(255,255,255,.15);
+
+  box-shadow:
+    0 0 0 2px
+    rgba(255,255,255,.15);
 }
 
 .orange{background:#ff6b35}
@@ -366,7 +634,9 @@ body{
 
 .range-value{
   margin-top:4px;
+
   color:var(--muted);
+
   font-size:8px;
 }
 
@@ -374,28 +644,41 @@ body{
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   font-size:9px;
 }
 
 .switch{
   width:32px;
   height:18px;
+
   padding:0;
+
   position:relative;
+
   border:0;
   border-radius:20px;
+
   background:#383d45;
+
+  cursor:pointer;
 }
 
 .switch::after{
   content:"";
+
   position:absolute;
+
   top:2px;
   left:2px;
+
   width:14px;
   height:14px;
+
   border-radius:50%;
+
   background:white;
+
   transition:.2s;
 }
 
@@ -409,31 +692,55 @@ body{
 
 .editor-actions{
   margin-top:10px;
+
   display:flex;
   justify-content:flex-end;
+
   gap:7px;
 }
 
 .editor-actions button{
   padding:8px 11px;
+
   border:1px solid var(--border);
   border-radius:10px;
+
   background:rgba(255,255,255,.05);
+
   color:var(--text);
+
   font-size:9px;
+
   cursor:pointer;
 }
 
 .save{
-  background:var(--accent)!important;
-  border-color:transparent!important;
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      var(--accent3)
+    ) !important;
+
+  border-color:transparent !important;
+
+  color:white;
 }
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
 @media(max-width:430px){
 
-  body{padding:6px}
+  body{
+    padding:6px;
+  }
 
-  .header{padding:14px}
+  .header{
+    padding:14px;
+  }
 
   .stats,
   .days,
@@ -442,7 +749,9 @@ body{
     padding-right:14px;
   }
 
-  .editor{padding:14px}
+  .editor{
+    padding:14px;
+  }
 
   .editor-grid{
     grid-template-columns:1fr;
@@ -459,6 +768,7 @@ body{
 </style>
 </head>
 
+
 <body>
 
 <div class="widget">
@@ -468,16 +778,21 @@ body{
   <div class="brand">
 
     <div class="icon">
+
       <svg viewBox="0 0 24 24"
            fill="none"
            stroke="white"
            stroke-width="2">
+
         <path d="M6 12l4 4L18 8"/>
         <path d="M4 4h16v16H4z"/>
+
       </svg>
+
     </div>
 
     <div>
+
       <div class="title">
         Training Streak
       </div>
@@ -485,6 +800,7 @@ body{
       <div class="subtitle">
         Consistency tracker
       </div>
+
     </div>
 
   </div>
@@ -492,7 +808,9 @@ body{
   <button
     class="settings-btn"
     id="settingsButton">
+
     ⚙
+
   </button>
 
 </header>
@@ -501,26 +819,46 @@ body{
 <section class="stats">
 
   <div class="stat">
+
     <div class="stat-label">
       CURRENT STREAK
     </div>
 
     <div class="stat-value">
+
       <span class="fire">🔥</span>
-      <span id="currentStreak">0</span>
-      <span>days</span>
+
+      <span id="currentStreak">
+        0
+      </span>
+
+      <span>
+        days
+      </span>
+
     </div>
+
   </div>
 
+
   <div class="stat">
+
     <div class="stat-label">
       BEST STREAK
     </div>
 
     <div class="stat-value">
-      <span id="bestStreak">0</span>
-      <span>days</span>
+
+      <span id="bestStreak">
+        0
+      </span>
+
+      <span>
+        days
+      </span>
+
     </div>
+
   </div>
 
 </section>
@@ -537,10 +875,13 @@ body{
     <div
       class="days-help"
       id="weekProgress">
+
       0 / 7
+
     </div>
 
   </div>
+
 
   <div
     class="day-grid"
@@ -565,10 +906,12 @@ body{
   </div>
 
   <div class="progress-bar">
+
     <div
       class="progress-fill"
       id="progressFill">
     </div>
+
   </div>
 
 </section>
@@ -592,6 +935,7 @@ body{
 
 
   <div class="editor-grid">
+
 
     <div class="editor-card">
 
@@ -653,7 +997,9 @@ body{
       <div
         class="range-value"
         id="blurValue">
+
         24px
+
       </div>
 
     </div>
@@ -676,7 +1022,9 @@ body{
       <div
         class="range-value"
         id="radiusValue">
+
         20px
+
       </div>
 
     </div>
@@ -685,7 +1033,7 @@ body{
     <div class="editor-card">
 
       <h3>
-        Theme
+        Display
       </h3>
 
       <div class="toggle">
@@ -713,7 +1061,9 @@ body{
     <button
       class="save"
       id="save">
+
       ✓ Save
+
     </button>
 
   </div>
@@ -732,9 +1082,9 @@ const root =
   document.documentElement;
 
 
-/* =========================
-   DAYS
-========================= */
+/* =====================================================
+   WEEK
+===================================================== */
 
 const dayNames =
   ["MON","TUE","WED","THU","FRI","SAT","SUN"];
@@ -745,6 +1095,7 @@ const today =
 const todayIndex =
   (today.getDay() + 6) % 7;
 
+
 let week =
   JSON.parse(
     localStorage.getItem(
@@ -752,10 +1103,18 @@ let week =
     ) || "null"
   );
 
+
 if(!week || week.length !== 7){
-  week = Array(7).fill("none");
+
+  week =
+    Array(7).fill("none");
+
 }
 
+
+/* =====================================================
+   RENDER DAYS
+===================================================== */
 
 function renderDays(){
 
@@ -768,15 +1127,22 @@ function renderDays(){
 
     wrapper.className =
       "day " +
-      (status === "training"
-        ? "training "
-        : "") +
-      (status === "rest"
-        ? "rest "
-        : "") +
-      (index === todayIndex
-        ? "today"
-        : "");
+      (
+        status === "training"
+          ? "training "
+          : ""
+      ) +
+      (
+        status === "rest"
+          ? "rest "
+          : ""
+      ) +
+      (
+        index === todayIndex
+          ? "today"
+          : ""
+      );
+
 
     const button =
       document.createElement("button");
@@ -784,12 +1150,15 @@ function renderDays(){
     button.className =
       "day-button";
 
+
     button.innerHTML = `
+
       <div class="day-number">
         ${dayNames[index]}
       </div>
 
       <div class="day-status">
+
         ${
           status === "training"
             ? "TRAIN"
@@ -797,28 +1166,43 @@ function renderDays(){
               ? "REST"
               : "—"
         }
+
       </div>
+
     `;
+
 
     button.addEventListener(
       "click",
       ()=>{
 
-        if(week[index] === "none")
-          week[index] = "training";
+        if(
+          week[index] === "none"
+        ){
 
-        else if(
+          week[index] =
+            "training";
+
+        }else if(
           week[index] === "training"
-        )
-          week[index] = "rest";
+        ){
 
-        else
-          week[index] = "none";
+          week[index] =
+            "rest";
+
+        }else{
+
+          week[index] =
+            "none";
+
+        }
+
 
         localStorage.setItem(
           "trainingStreakWeek",
           JSON.stringify(week)
         );
+
 
         renderDays();
         updateStats();
@@ -826,17 +1210,20 @@ function renderDays(){
       }
     );
 
+
     wrapper.appendChild(button);
-    $("dayGrid").appendChild(wrapper);
+
+    $("dayGrid")
+      .appendChild(wrapper);
 
   });
 
 }
 
 
-/* =========================
-   STREAK
-========================= */
+/* =====================================================
+   STATS
+===================================================== */
 
 function calculateStreak(){
 
@@ -844,15 +1231,36 @@ function calculateStreak(){
   let best = 0;
   let temp = 0;
 
-  for(let i=0;i<7;i++){
+
+  for(
+    let i=0;
+    i<7;
+    i++
+  ){
 
     if(
-      week[i] === "training" ||
+      week[i] === "training"
+    ){
+
+      temp++;
+
+      best =
+        Math.max(
+          best,
+          temp
+        );
+
+    }else if(
       week[i] === "rest"
     ){
 
       temp++;
-      best = Math.max(best,temp);
+
+      best =
+        Math.max(
+          best,
+          temp
+        );
 
     }else{
 
@@ -884,7 +1292,12 @@ function calculateStreak(){
 
   }
 
-  return {current,best};
+
+  return {
+    current,
+    best
+  };
+
 }
 
 
@@ -893,38 +1306,45 @@ function updateStats(){
   const streak =
     calculateStreak();
 
+
   $("currentStreak")
     .textContent =
     streak.current;
+
 
   $("bestStreak")
     .textContent =
     streak.best;
 
 
-  const planned =
+  const completed =
     week.filter(
       x =>
         x === "training" ||
         x === "rest"
     ).length;
 
+
   const percent =
     Math.round(
-      planned / 7 * 100
+      completed / 7 * 100
     );
+
 
   $("weekProgress")
     .textContent =
-    planned + " / 7";
+    completed + " / 7";
+
 
   $("progressText")
     .textContent =
     percent + "%";
 
+
   $("progressFill")
     .style.width =
     percent + "%";
+
 }
 
 
@@ -932,23 +1352,25 @@ renderDays();
 updateStats();
 
 
-/* =========================
-   SETTINGS
-========================= */
+/* =====================================================
+   EDITOR
+===================================================== */
 
 $("settingsButton")
 .addEventListener(
   "click",
   ()=>{
+
     $("editor")
       .classList.toggle("open");
+
   }
 );
 
 
-/* =========================
+/* =====================================================
    COLORS
-========================= */
+===================================================== */
 
 document
 .querySelectorAll(".color")
@@ -958,10 +1380,15 @@ document
     "click",
     ()=>{
 
+      const color =
+        button.dataset.color;
+
+
       root.style.setProperty(
         "--accent",
-        button.dataset.color
+        color
       );
+
 
       document
       .querySelectorAll(".color")
@@ -969,7 +1396,11 @@ document
         x.classList.remove("active")
       );
 
-      button.classList.add("active");
+
+      button.classList.add(
+        "active"
+      );
+
 
       saveStyle();
 
@@ -979,9 +1410,9 @@ document
 });
 
 
-/* =========================
+/* =====================================================
    BLUR
-========================= */
+===================================================== */
 
 $("blurRange")
 .addEventListener(
@@ -991,14 +1422,17 @@ $("blurRange")
     const value =
       e.target.value;
 
+
     root.style.setProperty(
       "--blur",
       value + "px"
     );
 
+
     $("blurValue")
       .textContent =
       value + "px";
+
 
     saveStyle();
 
@@ -1006,9 +1440,9 @@ $("blurRange")
 );
 
 
-/* =========================
+/* =====================================================
    RADIUS
-========================= */
+===================================================== */
 
 $("radiusRange")
 .addEventListener(
@@ -1018,77 +1452,17 @@ $("radiusRange")
     const value =
       e.target.value;
 
+
     root.style.setProperty(
       "--radius",
       value + "px"
     );
 
+
     $("radiusValue")
       .textContent =
       value + "px";
 
-    saveStyle();
-
-  }
-);
-
-
-/* =========================
-   THEME
-========================= */
-
-$("themeSwitch")
-.addEventListener(
-  "click",
-  ()=>{
-
-    $("themeSwitch")
-      .classList.toggle("active");
-
-    const light =
-      $("themeSwitch")
-      .classList.contains("active");
-
-    if(light){
-
-      root.style.setProperty(
-        "--bg",
-        "#e7e8eb"
-      );
-
-      root.style.setProperty(
-        "--text",
-        "#17191d"
-      );
-
-      root.style.setProperty(
-        "--muted",
-        "#666b73"
-      );
-
-      document.body.style.background =
-        "#e7e8eb";
-
-    }else{
-
-      root.style.setProperty(
-        "--bg",
-        "#171a1f"
-      );
-
-      root.style.setProperty(
-        "--text",
-        "#f5f7fa"
-      );
-
-      root.style.setProperty(
-        "--muted",
-        "#969da8"
-      );
-
-      document.body.style.background =
-        "#171a1f";
-    }
 
     saveStyle();
 
@@ -1096,27 +1470,34 @@ $("themeSwitch")
 );
 
 
-/* =========================
-   SAVE
-========================= */
+/* =====================================================
+   SAVE STYLE
+===================================================== */
 
 function saveStyle(){
 
   localStorage.setItem(
     "trainingStreakStyle",
+
     JSON.stringify({
 
       accent:
         getComputedStyle(root)
-        .getPropertyValue("--accent"),
+        .getPropertyValue(
+          "--accent"
+        ),
 
       blur:
         getComputedStyle(root)
-        .getPropertyValue("--blur"),
+        .getPropertyValue(
+          "--blur"
+        ),
 
       radius:
         getComputedStyle(root)
-        .getPropertyValue("--radius")
+        .getPropertyValue(
+          "--radius"
+        )
 
     })
   );
@@ -1131,21 +1512,30 @@ $("save")
 
     saveStyle();
 
-    $("save").textContent =
+
+    $("save")
+      .textContent =
       "✓ Saved";
 
-    setTimeout(()=>{
-      $("save").textContent =
-        "✓ Save";
-    },1200);
+
+    setTimeout(
+      ()=>{
+
+        $("save")
+          .textContent =
+          "✓ Save";
+
+      },
+      1200
+    );
 
   }
 );
 
 
-/* =========================
+/* =====================================================
    RESET
-========================= */
+===================================================== */
 
 $("reset")
 .addEventListener(
@@ -1167,32 +1557,22 @@ $("reset")
       "20px"
     );
 
-    root.style.setProperty(
-      "--bg",
-      "#171a1f"
-    );
 
-    root.style.setProperty(
-      "--text",
-      "#f5f7fa"
-    );
+    $("blurRange").value =
+      24;
 
-    root.style.setProperty(
-      "--muted",
-      "#969da8"
-    );
+    $("radiusRange").value =
+      20;
 
-    document.body.style.background =
-      "#171a1f";
 
-    $("blurRange").value = 24;
-    $("radiusRange").value = 20;
+    $("blurValue")
+      .textContent =
+      "24px";
 
-    $("blurValue").textContent = "24px";
-    $("radiusValue").textContent = "20px";
+    $("radiusValue")
+      .textContent =
+      "20px";
 
-    $("themeSwitch")
-      .classList.remove("active");
 
     document
     .querySelectorAll(".color")
@@ -1200,9 +1580,13 @@ $("reset")
       x.classList.remove("active")
     );
 
+
     document
-    .querySelector(".color.orange")
+    .querySelector(
+      ".color.orange"
+    )
     .classList.add("active");
+
 
     saveStyle();
 
@@ -1210,9 +1594,9 @@ $("reset")
 );
 
 
-/* =========================
+/* =====================================================
    LOAD
-========================= */
+===================================================== */
 
 const savedStyle =
   JSON.parse(
@@ -1224,11 +1608,15 @@ const savedStyle =
 
 if(savedStyle){
 
-  if(savedStyle.accent)
+  if(savedStyle.accent){
+
     root.style.setProperty(
       "--accent",
       savedStyle.accent
     );
+
+  }
+
 
   if(savedStyle.blur){
 
@@ -1237,12 +1625,19 @@ if(savedStyle){
       savedStyle.blur
     );
 
-    $("blurRange").value =
-      parseInt(savedStyle.blur);
 
-    $("blurValue").textContent =
+    $("blurRange").value =
+      parseInt(
+        savedStyle.blur
+      );
+
+
+    $("blurValue")
+      .textContent =
       savedStyle.blur;
+
   }
+
 
   if(savedStyle.radius){
 
@@ -1251,11 +1646,17 @@ if(savedStyle){
       savedStyle.radius
     );
 
-    $("radiusRange").value =
-      parseInt(savedStyle.radius);
 
-    $("radiusValue").textContent =
+    $("radiusRange").value =
+      parseInt(
+        savedStyle.radius
+      );
+
+
+    $("radiusValue")
+      .textContent =
       savedStyle.radius;
+
   }
 
 }
